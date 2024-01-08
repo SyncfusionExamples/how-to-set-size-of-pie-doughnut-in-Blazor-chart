@@ -1,12 +1,12 @@
 # How-to-set-size-of-pie-doughnut-in-Blazor-chart
 
-This article explains how to set the size of pie or doughnut chart in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts).
+This article explains how to set the size of pie or doughnut chart in Blazor Chart Component.
 
-**Customize the size of Pie or Doughnut Chart**
+**Customizing the size of a pie or doughnut chart**
 
-The [Radius](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.AccumulationChartSeries.html#Syncfusion_Blazor_Charts_AccumulationChartSeries_Radius) property determines the size of pie and doughnut series based on the available size in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts). It takes value from 0 to 100%. The default value of this property is 80%. So, pie and doughnut series take 80 percentage of the available size (minimum of chart width and height) of the chart, by default. 
+The [Radius](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.AccumulationChartSeries.html#Syncfusion_Blazor_Charts_AccumulationChartSeries_Radius) property determines the size of pie and doughnut series based on the available space in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts).  It accepts values from 0 to 100%, with the default set at 80%. By default, pie and doughnut series occupy 80% of the available space, taking the minimum of the chart width and height.
 
-The following code example illustrates this.
+The following code example illustrates pie with default size and pie with 50% of available size.
 
 **Index.razor**
 
@@ -14,20 +14,40 @@ The following code example illustrates this.
 
 @using Syncfusion.Blazor.Charts
 
-<SfAccumulationChart>
+<div class="chart-column">
+    <div >
+        <SfAccumulationChart Title="Pie with default size" Width="500"  >
+            <AccumulationChartBorder Width="2" Color="red"></AccumulationChartBorder>
+            <AccumulationChartSeriesCollection>
+                <AccumulationChartSeries DataSource="@StatisticsDetails" XName="Browser" YName="Users">
+                    <AccumulationDataLabelSettings Visible=true></AccumulationDataLabelSettings>
+                </AccumulationChartSeries>
+            </AccumulationChartSeriesCollection>
+            <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
+        </SfAccumulationChart>
+    </div> 
+    <div >
+        <SfAccumulationChart Title="Pie with 50% of available size" Width="500">
+            <AccumulationChartBorder Width="2" Color="red"></AccumulationChartBorder>
+        <AccumulationChartSeriesCollection>
+            <AccumulationChartSeries DataSource="@StatisticsDetails" XName="Browser" YName="Users" Radius="50%">
+                <AccumulationDataLabelSettings Visible=true></AccumulationDataLabelSettings>
+            </AccumulationChartSeries>
+        </AccumulationChartSeriesCollection>
+        <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
+    </SfAccumulationChart>
+    </div>
+</div>
 
-    <AccumulationChartSeriesCollection>
-        <AccumulationChartSeries DataSource="@StatisticsDetails" XName="Browser" YName="Users" Radius="50%">
-            <AccumulationDataLabelSettings Visible=true></AccumulationDataLabelSettings>
-        </AccumulationChartSeries>
-    </AccumulationChartSeriesCollection>
-
-    <AccumulationChartLegendSettings Visible="true"></AccumulationChartLegendSettings>
-
-</SfAccumulationChart>
+<style>
+    .chart-column {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+    }        
+</style>
 
 @code {
-
     public class Statistics
     {
         public string Browser { get; set; }
@@ -47,7 +67,7 @@ The following code example illustrates this.
 
 ```
 
-The following screenshot illustrate the output of the above code snippet.
+The following screenshot illustrates pie with default size and pie with 50% of available size.
 
 **Output**
 
@@ -55,7 +75,7 @@ The following screenshot illustrate the output of the above code snippet.
 
 **Conclusion**
 
-I hope you enjoyed learning how to customize Pie and Doughnut size in Blazor Chart Component.
+I hope you enjoyed learning how to customize pie and doughnut size in Blazor Chart Component.
 
 You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blazor-components/blazor-charts) page to know about its other groundbreaking feature representations and [documentation](https://blazor.syncfusion.com/documentation/chart/getting-started), and how to quickly get started for configuration specifications. You can also explore our [Blazor Chart example](https://blazor.syncfusion.com/demos/chart/line?theme=bootstrap5) to understand how to create and manipulate data.
 

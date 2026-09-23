@@ -1,64 +1,82 @@
-# How-to-set-size-of-pie-doughnut-in-Blazor-chart
+# Customize Pie and Doughnut Chart Size in Syncfusion Blazor Charts
 
-This article explains how to set the size of pie or doughnut chart in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts).
+## Overview
 
-**Customize the size of Pie or Doughnut Chart**
+This sample demonstrates how to customize the rendered size of pie and doughnut charts using the `Radius` property in the Syncfusion [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts) component. The example uses an accumulation chart bound to browser usage statistics and configures a custom radius to control how much space the chart occupies within the available rendering area.
 
-The [Radius](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.AccumulationChartSeries.html#Syncfusion_Blazor_Charts_AccumulationChartSeries_Radius) property determines the size of pie and doughnut series based on the available size in [Blazor Chart](https://www.syncfusion.com/blazor-components/blazor-charts). It takes value from 0 to 100%. The default value of this property is 80%. So, pie and doughnut series take 80 percentage of the available size (minimum of chart width and height) of the chart, by default. 
+Adjusting the radius is useful when designing responsive dashboards, displaying multiple charts on a single page, or creating layouts that require additional space for legends, labels, and surrounding UI elements. The sample provides a simple implementation that illustrates how chart size can be controlled without modifying the underlying data source.
 
-The following code example illustrates this.
+## Key Features
 
-**Index.razor**
+- Uses `SfAccumulationChart` to render a pie chart visualization.
+- Configures `AccumulationChartSeries` with:
+  - `DataSource="@StatisticsDetails"`
+  - `XName="Browser"`
+  - `YName="Users"`
+  - `Radius="50%"`
+- Demonstrates how the `Radius` property controls the size of pie and doughnut series based on the available chart area.
+- Enables data labels using `AccumulationDataLabelSettings Visible="true"`.
+- Displays a chart legend using `AccumulationChartLegendSettings Visible="true"`.
+- Binds chart data using a local `Statistics` data model containing browser names and user counts.
+- Uses percentage-based radius values for responsive chart sizing.
 
-```cshtml
+## Prerequisites
 
-@using Syncfusion.Blazor.Charts
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/)
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet) compatible with the project's target framework
 
-<SfAccumulationChart>
+## How to Run the Project
 
-    <AccumulationChartSeriesCollection>
-        <AccumulationChartSeries DataSource="@StatisticsDetails" XName="Browser" YName="Users" Radius="50%">
-            <AccumulationDataLabelSettings Visible=true></AccumulationDataLabelSettings>
-        </AccumulationChartSeries>
-    </AccumulationChartSeriesCollection>
+**Visual Studio 2022**
 
-    <AccumulationChartLegendSettings Visible="true"></AccumulationChartLegendSettings>
+1. Clone or download this repository.
+2. Open the project file:
 
-</SfAccumulationChart>
+   `SizeOfPieOrDoughnutChart/SizeOfPieOrDoughnutChart.csproj`
 
-@code {
+3. Restore NuGet packages.
+4. Build the project.
+5. Run the application using `Ctrl+F5`.
 
-    public class Statistics
-    {
-        public string Browser { get; set; }
-        public double Users { get; set; }
-    }
+**Visual Studio Code**
 
-    public List<Statistics> StatisticsDetails = new List<Statistics>
-    {
-        new Statistics { Browser = "Chrome", Users = 37 },
-        new Statistics { Browser = "UC Browser", Users = 17 },
-        new Statistics { Browser = "iPhone", Users = 19 },
-        new Statistics { Browser = "Others", Users = 4  },
-        new Statistics { Browser = "Opera", Users = 11 },
-        new Statistics { Browser = "Android", Users = 12 },
-    };
-}
+1. Clone or download this repository.
+2. Open the repository folder in Visual Studio Code.
+3. Open the integrated terminal.
+4. Navigate to the project directory:
 
+```bash
+cd SizeOfPieOrDoughnutChart
 ```
 
-The following screenshot illustrate the output of the above code snippet.
+5. Restore NuGet packages:
 
-**Output**
+```bash
+dotnet restore
+```
 
-![](/pie-and-doughnut-size-customization.png)
+6. Run the application:
 
-**Conclusion**
+```bash
+dotnet run
+```
 
-I hope you enjoyed learning how to customize Pie and Doughnut size in Blazor Chart Component.
+7. Open the local URL displayed in the console output.
 
-You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blazor-components/blazor-charts) page to know about its other groundbreaking feature representations and [documentation](https://blazor.syncfusion.com/documentation/chart/getting-started), and how to quickly get started for configuration specifications. You can also explore our [Blazor Chart example](https://blazor.syncfusion.com/demos/chart/line?theme=bootstrap5) to understand how to create and manipulate data.
+## Project Structure
 
-For current customers, you can check out our components from the [License and Downloads](https://www.syncfusion.com/sales/teamlicense) page. If you are new to Syncfusion, you can try our 30-day [free trial](https://www.syncfusion.com/downloads/blazor) to check out our other controls.
+`SizeOfPieOrDoughnutChart/Pages/Index.razor` - Demonstrates the accumulation chart configuration and uses the `Radius="50%"` property to control chart size.
 
-If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [support portal](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
+`SizeOfPieOrDoughnutChart/SizeOfPieOrDoughnutChart.csproj` - Project configuration containing framework and package reference information.
+
+`pie-and-doughnut-size-customization.png` — Screenshot showing the rendered chart output.
+
+## Support and Feedback
+
+- For general product questions, visit the [Syncfusion Community Forum](https://www.syncfusion.com/forums) or [Syncfusion Support](https://www.syncfusion.com/support).
+- To report an issue specific to this sample, open a GitHub issue in this repository.
+- Refer to the official documentation for the `Radius` property in accumulation charts: https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.AccumulationChartSeries.html#Syncfusion_Blazor_Charts_AccumulationChartSeries_Radius
+
+## License
+
+This is a Syncfusion sample project provided to demonstrate product usage. Review the [Syncfusion license terms](https://www.syncfusion.com/sales/pricing?category=ui-components) before using Syncfusion components in your own applications.
